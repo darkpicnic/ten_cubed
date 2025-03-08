@@ -15,4 +15,4 @@ class CreateUsers < ActiveRecord::Migration[<%= migration_version %>]
     
     add_index :users, :email, unique: true
   end
-end 
+end
