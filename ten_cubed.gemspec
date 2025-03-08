@@ -16,9 +16,10 @@ Gem::Specification.new do |spec|
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
+  spec.metadata["homepage_uri"] = "https://github.com/darkpicnic/ten_cubed"
+  spec.metadata["source_code_uri"] = "https://github.com/darkpicnic/ten_cubed"
+  spec.metadata["changelog_uri"] = "https://github.com/darkpicnic/ten_cubed/blob/main/CHANGELOG.md"
+  spec.metadata["documentation_uri"] = "https://github.com/darkpicnic/ten_cubed/blob/main/README.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -34,8 +35,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Dependencies
-  spec.add_dependency "rails", ">= 7.0.0"
-  spec.add_dependency "activerecord", ">= 7.0.0"
+  spec.add_dependency "rails", "~> 7.0", ">= 7.0.0"
+  spec.add_dependency "activerecord", "~> 7.0", ">= 7.0.0"
   spec.add_dependency "pg", "~> 1.5"
 
   # Development dependencies
