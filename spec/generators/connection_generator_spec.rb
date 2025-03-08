@@ -38,15 +38,23 @@ RSpec.describe TenCubed::Generators::ConnectionGenerator, type: :generator do
   end
 
   describe "#migration_version" do
+
     context "with rails version greater than 5.0.0" do
-      it "includes migration version" do
+      before do
         allow(Rails).to receive(:version).and_return("8.0.0")
+      end
+      
+      it "includes migration version" do
         generator = described_class.new
         expect(generator.send(:migration_version)).to eq("[8.0]")
       end
     end
 
     context "with rails version less than 5.0.0" do
+      before do
+        allow(Rails).to receive(:version).and_return("4.2.0")
+      end
+
       it "returns nil" do
         allow(Rails).to receive(:version).and_return("4.2.0")
         generator = described_class.new
