@@ -13,8 +13,8 @@ This project is currently in active development. APIs and functionality may chan
 
 ## Requirements
 
-* Ruby 3.0+
-* Rails 6.0+
+* Ruby 3.2+
+* Rails 7.0+
 * PostgreSQL database (required for the recursive CTE queries used by the gem)
 
 ## About
