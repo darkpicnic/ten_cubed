@@ -12,3 +12,4 @@
 .cursorrules
 .idea/
 *.gem
+Gemfile.lock

@@ -37,6 +37,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
+        bundler-frozen: false
 
     - name: Install dependencies
       run: |
