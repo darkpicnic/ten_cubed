@@ -83,8 +83,8 @@ RSpec.describe TenCubed::Generators::UserGenerator, type: :generator do
   end
 
   def migration_version
-    if Rails.version >= '5.0.0'
-      rails_version = ENV['RAILS_VERSION'] || Rails.version.to_f
+    if Rails.version >= "5.0.0"
+      rails_version = ENV["RAILS_VERSION"] || Rails.version.to_f
       "[#{rails_version}]"
     end
   end
