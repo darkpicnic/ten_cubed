@@ -4,8 +4,15 @@
 module TenCubed
   module Generators
     class UserGenerator < Rails::Generators::Base
+      include Rails::Generators::Migration
       source_root File.expand_path("templates", __dir__)
       desc "Create a User model with ten_cubed functionality"
+
+      # Required for Rails::Generators::Migration
+      def self.next_migration_number(dirname)
+        next_migration_number = current_migration_number(dirname) + 1
+        ActiveRecord::Migration.next_migration_number(next_migration_number)
+      end
 
       def create_user_model
         template "user.rb", "app/models/user.rb"

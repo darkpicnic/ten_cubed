@@ -4,8 +4,15 @@
 module TenCubed
   module Generators
     class ConnectionGenerator < Rails::Generators::Base
+      include Rails::Generators::Migration
       source_root File.expand_path("templates", __dir__)
       desc "Create Connection model and migration for TenCubed"
+
+      # Required for Rails::Generators::Migration
+      def self.next_migration_number(dirname)
+        next_migration_number = current_migration_number(dirname) + 1
+        ActiveRecord::Migration.next_migration_number(next_migration_number)
+      end
 
       def create_connection_migration
         migration_template "create_connections.rb",
