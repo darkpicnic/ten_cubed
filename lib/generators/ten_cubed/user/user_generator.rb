@@ -15,7 +15,24 @@ module TenCubed
       end
 
       def create_user_model
-        template "user.rb", "app/models/user.rb"
+        user_file = "app/models/user.rb"
+        
+        if File.exist?(user_file)
+          # Check if the file already has the include statement
+          contents = File.read(user_file)
+          unless contents.include?("include TenCubed::Models::Concerns::TenCubedUser")
+            # Insert the include statement after the class declaration
+            inject_into_file user_file, after: /class User < .*\n/ do
+              "  include TenCubed::Models::Concerns::TenCubedUser\n"
+            end
+            say_status :insert, "include TenCubed::Models::Concerns::TenCubedUser added to User model", :green
+          else
+            say_status :identical, "User model already includes TenCubedUser", :blue
+          end
+        else
+          # Create a new user.rb file from template
+          template "user.rb", user_file
+        end
       end
 
       def create_user_migration

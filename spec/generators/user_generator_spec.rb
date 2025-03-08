@@ -22,6 +22,34 @@ RSpec.describe TenCubed::Generators::UserGenerator, type: :generator do
     end
   end
 
+  it "adds TenCubedUser concern to existing user model" do
+    # Create the models directory
+    FileUtils.mkdir_p("#{destination_root}/app/models")
+    
+    # Create an existing user model without the concern
+    File.open("#{destination_root}/app/models/user.rb", "w") do |f|
+      f.write(<<~RUBY)
+        # frozen_string_literal: true
+        
+        class User < ApplicationRecord
+          
+        end
+      RUBY
+    end
+    
+    # Ensure file is properly closed before proceeding
+    File.exist?("#{destination_root}/app/models/user.rb")
+    
+    # Run the generator with --force to ensure it handles existing files properly
+    run_generator ["--force"]
+    
+    # Verify the concern was added - with updated expectations
+    assert_file "app/models/user.rb" do |content|
+      assert_match(/class User < ApplicationRecord/, content)
+      assert_match(/include TenCubed::Models::Concerns::TenCubedUser/, content)
+    end
+  end
+
   it "creates a migration for users table" do
     run_generator
     assert_migration "db/migrate/create_users.rb" do |migration|
