@@ -14,6 +14,17 @@ RSpec.describe TenCubed::Generators::ConnectionGenerator, type: :generator do
     allow(Rails).to receive(:version).and_return("8.0.0")
   end
 
+  it "creates a Connection model" do
+    run_generator
+    assert_file "app/models/connection.rb" do |content|
+      assert_match(/class Connection < ApplicationRecord/, content)
+      assert_match(/belongs_to :user/, content)
+      assert_match(/belongs_to :target, class_name: "User"/, content)
+      assert_match(/validate :ensure_user_has_less_than_max_connections/, content)
+      assert_match(/validate :ensure_target_is_not_self/, content)
+    end
+  end
+
   it "creates a migration for connections table" do
     run_generator
     assert_migration "db/migrate/create_connections.rb" do |migration|

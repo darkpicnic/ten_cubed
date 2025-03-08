@@ -14,6 +14,10 @@ module TenCubed
         ActiveRecord::Migration.next_migration_number(next_migration_number)
       end
 
+      def create_connection_model
+        template "connection.rb", "app/models/connection.rb"
+      end
+
       def create_connection_migration
         migration_template "create_connections.rb",
           "db/migrate/create_connections.rb",
