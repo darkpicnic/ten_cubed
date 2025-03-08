@@ -60,8 +60,9 @@ module TenCubed
       end
 
       def migration_version
-        if Rails.version >= "5.0.0"
-          "[#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}]"
+        if Rails.version >= '5.0.0'
+          rails_version = ENV['RAILS_VERSION'] || "#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}"
+          "[#{rails_version}]"
         end
       end
     end

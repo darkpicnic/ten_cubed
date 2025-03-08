@@ -57,3 +57,4 @@ jobs:
         POSTGRES_PASSWORD: postgres
         POSTGRES_DB: ten_cubed_test
         RAILS_ENV: test
+        RAILS_VERSION: 8.0
