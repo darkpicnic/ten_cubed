@@ -39,7 +39,11 @@ jobs:
         bundler-cache: true
 
     - name: Install dependencies
-      run: bundle install
+      run: |
+        gem install net-pop
+        gem install net-protocol
+        bundle update net-pop
+        bundle install
 
     - name: Run standard
       run: bundle exec standardrb
