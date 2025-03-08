@@ -4,6 +4,12 @@ A Ruby on Rails gem implementing the ten_cubed networking system - an artificial
 
 The ten_cubed system promotes healthier social interactions by imposing natural limits on connection growth, preventing viral content spread, and eliminating influencer dynamics.
 
+## Project Status
+
+⚠️ **ACTIVE DEVELOPMENT** ⚠️
+
+This project is currently in active development. APIs and functionality may change without notice. Breaking changes are possible between versions. While we encourage testing and contributions, this gem is not yet recommended for production environments without thorough evaluation.
+
 ## Requirements
 
 * Ruby 3.0+
