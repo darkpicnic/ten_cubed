@@ -40,25 +40,34 @@ Then run the installer:
 $ rails generate ten_cubed:install
 ```
 
-This will:
-- Add the necessary migrations for existing User models
+The installer will:
 - Create an initializer at `config/initializers/ten_cubed.rb`
+- Check if a User model exists
+  - If it exists: Add a migration for the `max_degree` column and inject the TenCubed concern
+  - If it doesn't exist: Generate a new User model with TenCubed functionality
+- Check if a Connection model exists
+  - If it exists: Raise an error (you need to rename or remove the existing model)
+  - If it doesn't exist: Generate the Connection model for TenCubed
+- Install all required migrations
 
-If you don't have a User model yet, you can create one with:
+After running the installer, don't forget to run:
 
 ```bash
+$ rails db:migrate
+```
+
+### Manual Setup (Alternative)
+
+If you prefer to set up the components individually:
+
+```bash
+# Generate the User model (if you don't already have one)
 $ rails generate ten_cubed:user
-```
 
-Also, make sure to create the Connection model:
-
-```bash
+# Generate the Connection model
 $ rails generate ten_cubed:connection
-```
 
-After creating all migrations, run:
-
-```bash
+# Run migrations
 $ rails db:migrate
 ```
 
@@ -180,3 +189,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/darkpi
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
