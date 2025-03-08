@@ -41,7 +41,7 @@ Gem::Specification.new do |spec|
   # Development dependencies
   spec.add_development_dependency "rspec-rails", "~> 7.1.1"
   spec.add_development_dependency "database_cleaner-active_record", "~> 2.2"
-  spec.add_development_dependency "standard", "~> 1.2"
+  spec.add_development_dependency "standard", "~> 1.3"
   spec.add_development_dependency "factory_bot_rails", "~> 6.2"
   spec.add_development_dependency "simplecov", "~> 0.22.0"
   spec.add_development_dependency "generator_spec", "~> 0.9.5"
