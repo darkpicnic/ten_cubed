@@ -22,7 +22,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-        bundler: true
+        bundler-cache: true
     - name: Update dependencies
       run: |
         bundle update
