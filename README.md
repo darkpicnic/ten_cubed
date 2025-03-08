@@ -32,7 +32,7 @@ For more details on the ten_cubed concept, see: [https://highlyprobable.io/artic
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ten_cubed'
+gem 'ten_cubed', github: "darkpicnic/ten_cubed"
 ```
 
 And then execute:
