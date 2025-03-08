@@ -1,4 +1,5 @@
 # ten_cubed
+[![Ruby Gem CI](https://github.com/darkpicnic/ten_cubed/actions/workflows/main.yml/badge.svg)](https://github.com/darkpicnic/ten_cubed/actions/workflows/main.yml)
 
 A Ruby on Rails gem implementing the ten_cubed networking system - an artificially restricted social graph that limits users to 10 direct connections with a maximum network size of 1,110 total connections (10 + 100 + 1000).
 
