@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 module TenCubed
@@ -30,7 +31,7 @@ module TenCubed
           generate "ten_cubed:user"
         end
       end
-      
+
       def setup_connection_model
         if model_exists?("Connection")
           # Throw an error if Connection model already exists
@@ -51,7 +52,7 @@ module TenCubed
           "db/migrate/add_max_degree_to_users.rb",
           migration_version: migration_version
       end
-      
+
       def inject_ten_cubed_user_concern
         inject_into_file "app/models/user.rb", after: "class User < ApplicationRecord\n" do
           "  include TenCubed::Models::Concerns::TenCubedUser\n"
@@ -65,4 +66,4 @@ module TenCubed
       end
     end
   end
-end 
+end

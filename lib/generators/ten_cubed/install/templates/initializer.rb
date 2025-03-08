@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 TenCubed.configure do |config|
@@ -13,4 +14,4 @@ TenCubed.configure do |config|
   # Table name for connections
   # Default: :connections
   # config.connection_table_name = :connections
-end 
+end

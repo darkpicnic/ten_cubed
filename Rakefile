@@ -16,4 +16,4 @@ task default: %i[spec standard]
 
 # Run generator tests specifically
 desc "Run generator tests"
-task :test_generators => :generator_spec
+task test_generators: :generator_spec

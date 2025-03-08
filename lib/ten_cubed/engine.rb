@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 require "rails"
@@ -17,7 +18,7 @@ module TenCubed
 
     initializer "ten_cubed.check_postgres" do
       ActiveSupport.on_load(:active_record) do
-        unless ActiveRecord::Base.connection.adapter_name =~ /postgresql/i
+        unless /postgresql/i.match?(ActiveRecord::Base.connection.adapter_name)
           raise "TenCubed requires PostgreSQL as the database adapter. Found: #{ActiveRecord::Base.connection.adapter_name}"
         end
       end
@@ -35,4 +36,4 @@ module TenCubed
       end
     end
   end
-end 
+end

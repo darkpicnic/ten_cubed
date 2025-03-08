@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 require "spec_helper"
@@ -21,10 +22,10 @@ RSpec.describe TenCubed::Models::Concerns::TenCubedUser do
   describe "#my_network" do
     it "caches the network result" do
       expect(user).to receive(:network).with(3).once.and_return([friend, friend_of_friend, third_degree])
-      
+
       result1 = user.my_network
       result2 = user.my_network
-      
+
       expect(result1).to eq([friend, friend_of_friend, third_degree])
       expect(result2).to eq([friend, friend_of_friend, third_degree])
     end
@@ -73,10 +74,10 @@ RSpec.describe TenCubed::Models::Concerns::TenCubedUser do
 
     it "queries the network with SQL" do
       expect(user_class).to receive(:find_by_sql).and_return([friend, friend_of_friend])
-      
+
       result = user.network(2)
-      
+
       expect(result).to eq([friend, friend_of_friend])
     end
   end
-end 
+end

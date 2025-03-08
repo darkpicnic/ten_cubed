@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 require "active_record"
@@ -59,10 +60,10 @@ module TenCubed
           ORDER BY users.id, friend_of_friend.depth;
           SQL
 
-          connections = self.class.find_by_sql([sql, { user_id: id, max_depth: max_depth }])
+          connections = self.class.find_by_sql([sql, {user_id: id, max_depth: max_depth}])
           connections.uniq { |c| c.id }
         end
       end
     end
   end
-end 
+end

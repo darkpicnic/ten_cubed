@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 require "spec_helper"
@@ -44,7 +45,7 @@ RSpec.describe TenCubed::Generators::ConnectionGenerator, type: :generator do
         expect(generator.send(:migration_version)).to eq("[8.0]")
       end
     end
-    
+
     context "with rails version less than 5.0.0" do
       it "returns nil" do
         allow(Rails).to receive(:version).and_return("4.2.0")
@@ -53,4 +54,4 @@ RSpec.describe TenCubed::Generators::ConnectionGenerator, type: :generator do
       end
     end
   end
-end 
+end

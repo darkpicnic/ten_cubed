@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 RSpec.describe TenCubed do

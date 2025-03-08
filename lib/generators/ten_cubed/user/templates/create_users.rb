@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # Created by AI
 
-class CreateUsers < ActiveRecord::Migration<%= migration_version %>
+class CreateUsers < ActiveRecord::Migration[<%= migration_version %>]
   def change
     create_table :users do |t|
       t.string :name

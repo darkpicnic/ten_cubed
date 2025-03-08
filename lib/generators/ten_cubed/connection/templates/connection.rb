@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 class Connection < ApplicationRecord
@@ -21,4 +22,4 @@ class Connection < ApplicationRecord
       errors.add(:target, "can't be the same as user")
     end
   end
-end 
+end

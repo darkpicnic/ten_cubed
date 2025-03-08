@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 module TenCubed
@@ -33,4 +34,4 @@ module TenCubed
       end
     end
   end
-end 
+end

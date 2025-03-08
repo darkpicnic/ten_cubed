@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 require "spec_helper"
@@ -25,24 +26,22 @@ RSpec.describe TenCubed::Generators::UserGenerator, type: :generator do
   it "adds TenCubedUser concern to existing user model" do
     # Create the models directory
     FileUtils.mkdir_p("#{destination_root}/app/models")
-    
+
     # Create an existing user model without the concern
-    File.open("#{destination_root}/app/models/user.rb", "w") do |f|
-      f.write(<<~RUBY)
-        # frozen_string_literal: true
+    File.write("#{destination_root}/app/models/user.rb", <<~RUBY)
+      # frozen_string_literal: true
+      
+      class User < ApplicationRecord
         
-        class User < ApplicationRecord
-          
-        end
-      RUBY
-    end
-    
+      end
+    RUBY
+
     # Ensure file is properly closed before proceeding
     File.exist?("#{destination_root}/app/models/user.rb")
-    
+
     # Run the generator with --force to ensure it handles existing files properly
     run_generator ["--force"]
-    
+
     # Verify the concern was added - with updated expectations
     assert_file "app/models/user.rb" do |content|
       assert_match(/class User < ApplicationRecord/, content)
@@ -67,7 +66,7 @@ RSpec.describe TenCubed::Generators::UserGenerator, type: :generator do
         expect(generator.send(:migration_version)).to eq("[8.0]")
       end
     end
-    
+
     context "with rails version less than 5.0.0" do
       it "returns nil" do
         allow(Rails).to receive(:version).and_return("4.2.0")
@@ -76,4 +75,4 @@ RSpec.describe TenCubed::Generators::UserGenerator, type: :generator do
       end
     end
   end
-end 
+end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 require "active_record"
@@ -34,4 +35,4 @@ module TenCubed
       end
     end
   end
-end 
+end

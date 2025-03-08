@@ -8,8 +8,6 @@ module TenCubed
 
   # Configuration
   class << self
-    attr_accessor :configuration
-
     def configuration
       @configuration ||= Configuration.new
     end

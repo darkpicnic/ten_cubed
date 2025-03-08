@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 module TenCubed
@@ -16,18 +17,18 @@ module TenCubed
 
       def create_user_model
         user_file = "app/models/user.rb"
-        
+
         if File.exist?(user_file)
           # Check if the file already has the include statement
           contents = File.read(user_file)
-          unless contents.include?("include TenCubed::Models::Concerns::TenCubedUser")
+          if contents.include?("include TenCubed::Models::Concerns::TenCubedUser")
+            say_status :identical, "User model already includes TenCubedUser", :blue
+          else
             # Insert the include statement after the class declaration
             inject_into_file user_file, after: /class User < .*\n/ do
               "  include TenCubed::Models::Concerns::TenCubedUser\n"
             end
             say_status :insert, "include TenCubed::Models::Concerns::TenCubedUser added to User model", :green
-          else
-            say_status :identical, "User model already includes TenCubedUser", :blue
           end
         else
           # Create a new user.rb file from template
@@ -50,4 +51,4 @@ module TenCubed
       end
     end
   end
-end 
+end

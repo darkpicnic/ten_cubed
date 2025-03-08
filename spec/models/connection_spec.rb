@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 require "spec_helper"
@@ -42,4 +43,4 @@ RSpec.describe TenCubed::Connection, type: :model do
       end
     end
   end
-end 
+end

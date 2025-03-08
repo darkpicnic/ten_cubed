@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Created by AI
 
 module TenCubed
@@ -18,4 +19,4 @@ module TenCubed
       @connection_table_name = :connections
     end
   end
-end 
+end

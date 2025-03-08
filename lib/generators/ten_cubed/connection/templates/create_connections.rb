@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # Created by AI
 
-class CreateConnections < ActiveRecord::Migration<%= migration_version %>
+class CreateConnections < ActiveRecord::Migration[<%= migration_version %>]
   def change
     create_table :connections do |t|
       t.references :user, null: false, foreign_key: true
@@ -12,4 +12,4 @@ class CreateConnections < ActiveRecord::Migration<%= migration_version %>
     
     add_index :connections, [:user_id, :target_id], unique: true
   end
-end 
+end
