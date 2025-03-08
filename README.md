@@ -10,7 +10,7 @@ The ten_cubed system promotes healthier social interactions by imposing natural 
 * Rails 6.0+
 * PostgreSQL database (required for the recursive CTE queries used by the gem)
 
-## About Ten Cubed
+## About
 
 The ten_cubed networking system is based on three key concepts:
 
