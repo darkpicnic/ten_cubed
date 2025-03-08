@@ -46,6 +46,10 @@ jobs:
         bundle update net-pop
         bundle install
 
+    - name: Set Rails version
+      run: |
+        bundle add rails --version "8.0"
+
     - name: Run standard
       run: bundle exec standardrb
       
