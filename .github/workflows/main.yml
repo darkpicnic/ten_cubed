@@ -48,7 +48,7 @@ jobs:
 
     - name: Run standard
       run: bundle exec standardrb
-      
+
     - name: Run tests
       run: bundle exec rspec
       env:
@@ -57,4 +57,4 @@ jobs:
         POSTGRES_PASSWORD: postgres
         POSTGRES_DB: ten_cubed_test
         RAILS_ENV: test
-        RAILS_VERSION: 8.0
+        RAILS_VERSION: "8.0"
