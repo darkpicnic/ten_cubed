@@ -43,7 +43,6 @@ $ rails generate ten_cubed:install
 This will:
 - Add the necessary migrations for existing User models
 - Create an initializer at `config/initializers/ten_cubed.rb`
-- Mount the TenCubed engine at `/ten_cubed`
 
 If you don't have a User model yet, you can create one with:
 

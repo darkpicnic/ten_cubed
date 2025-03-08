@@ -15,10 +15,6 @@ module TenCubed
         template "initializer.rb", "config/initializers/ten_cubed.rb"
       end
 
-      def mount_engine
-        route 'mount TenCubed::Engine => "/ten_cubed"'
-      end
-
       def add_user_migration
         if model_exists?("User")
           add_max_degree_to_existing_user
