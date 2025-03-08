@@ -3,7 +3,7 @@
 
 A Ruby on Rails gem implementing the ten_cubed networking system - an artificially restricted social graph that limits users to 10 direct connections with a maximum network size of 1,110 total connections (10 + 100 + 1000).
 
-The ten_cubed system promotes healthier social interactions by imposing natural limits on connection growth, preventing viral content spread, and eliminating influencer dynamics.
+The ten_cubed system promotes healthier social interactions by imposing natural limits on connection growth, limiting viral content spread, and eliminating influencer dynamics.
 
 ## Project Status
 
