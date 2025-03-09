@@ -5,9 +5,6 @@ A Ruby on Rails gem implementing the ten_cubed networking system - an artificial
 
 The ten_cubed system promotes healthier social interactions by imposing natural limits on connection growth, limiting viral content spread, and eliminating influencer dynamics.
 
-## Disclosure of AI generated content
-The core functionality of ten_cubed was written by myself, however, this gem was almost entirely AI generated through Cursor + Claude 3.7. I've added specific strings throughout the project to indicate when files were entirely written by AI (though some of these are actually copied from my direct input). There is almost certainly some head scratchers in this repository; feel free to submit PRs if something seems really off.
-
 ## Project Status
 
 ⚠️ **ACTIVE DEVELOPMENT** ⚠️
@@ -191,6 +188,9 @@ end
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`.
+
+## Disclosure of AI generated content
+The core functionality of ten_cubed was written by myself, however, this gem was almost entirely AI generated through Cursor + Claude 3.7. I've added specific strings throughout the project to indicate when files were entirely written by AI (though some of these are actually copied from my direct input). There is almost certainly some head scratchers in this repository; feel free to submit PRs if something seems really off.
 
 ## Contributing
 
