@@ -32,7 +32,7 @@ module TenCubed
 
     config.to_prepare do
       model_name = TenCubed.configuration.user_model_name
-      if const_defined?(model_name)
+      if Object.const_defined?(model_name)
         model = model_name.constantize
         model.include TenCubed::Models::Concerns::TenCubedUser
       end
