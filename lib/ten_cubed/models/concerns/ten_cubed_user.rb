@@ -19,7 +19,7 @@ module TenCubed
         # Returns the user's network up to the user's max_degree
         def my_network
           @my_network ||= {}
-          @my_network[max_degree] ||= network(max_degree)
+          @my_network[max_degree] ||= network_graph(max_degree)
         end
 
         # Returns the degree of connection between self and another user
@@ -36,7 +36,7 @@ module TenCubed
         end
 
         # Returns a network of connections up to the specified max_depth
-        def network(max_depth = 3)
+        def network_graph(max_depth = 3)
           return [] if max_depth <= 0 || max_depth > 3
 
           user_table = TenCubed.configuration.user_table_name
