@@ -31,9 +31,12 @@ module TenCubed
     end
 
     config.to_prepare do
-      if defined?(User)
-        User.include TenCubed::Models::Concerns::TenCubedUser
+      model_name = TenCubed.configuration.user_model_name
+      if const_defined?(model_name)
+        model = model_name.constantize
+        model.include TenCubed::Models::Concerns::TenCubedUser
       end
+      TenCubed::Connection.setup_associations!
     end
   end
 end

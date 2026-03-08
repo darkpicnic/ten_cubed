@@ -10,12 +10,10 @@ module TenCubed
       TenCubed.configuration.connection_table_name.to_s
     end
 
-    if defined?(::User)
-      belongs_to :user, class_name: "::User"
-      belongs_to :target, class_name: "::User"
-    else
-      # For tests
-      attr_accessor :user, :target
+    def self.setup_associations!
+      user_class_name = "::#{TenCubed.configuration.user_model_name}"
+      belongs_to :user, class_name: user_class_name
+      belongs_to :target, class_name: user_class_name
     end
 
     validate :ensure_user_has_less_than_max_connections, on: :create

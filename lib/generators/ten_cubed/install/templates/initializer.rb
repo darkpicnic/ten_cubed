@@ -14,4 +14,16 @@ TenCubed.configure do |config|
   # Table name for connections
   # Default: :connections
   # config.connection_table_name = :connections
+
+  # Model name for the user model (the model that includes TenCubedUser)
+  # Default: "User"
+  # config.user_model_name = "User"
+
+  # Table name for the user model
+  # Default: "users"
+  # config.user_table_name = "users"
+
+  # Class name for the connection model
+  # Default: "TenCubed::Connection"
+  # config.connection_class_name = "TenCubed::Connection"
 end

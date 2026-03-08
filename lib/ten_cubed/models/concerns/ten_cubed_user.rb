@@ -12,7 +12,7 @@ module TenCubed
         extend ActiveSupport::Concern
 
         included do
-          has_many :connections, dependent: :destroy, class_name: "TenCubed::Connection", foreign_key: "user_id"
+          has_many :connections, dependent: :destroy, class_name: TenCubed.configuration.connection_class_name, foreign_key: "user_id"
           has_many :friends, through: :connections, source: :target
         end
 
@@ -39,25 +39,27 @@ module TenCubed
         def network(max_depth = 3)
           return [] if max_depth <= 0 || max_depth > 3
 
+          user_table = TenCubed.configuration.user_table_name
+
           sql = <<-SQL
           WITH RECURSIVE friend_of_friend AS (
-            SELECT connections.target_id, users.max_degree, 1 AS depth
+            SELECT connections.target_id, #{user_table}.max_degree, 1 AS depth
             FROM #{TenCubed.configuration.connection_table_name}
-            JOIN users ON connections.target_id = users.id
+            JOIN #{user_table} ON connections.target_id = #{user_table}.id
             WHERE connections.user_id = :user_id
             UNION ALL
-            SELECT connections.target_id, users.max_degree, depth + 1
+            SELECT connections.target_id, #{user_table}.max_degree, depth + 1
             FROM #{TenCubed.configuration.connection_table_name}
-            JOIN users ON connections.target_id = users.id
+            JOIN #{user_table} ON connections.target_id = #{user_table}.id
             JOIN friend_of_friend ON connections.user_id = friend_of_friend.target_id
             WHERE depth < :max_depth
-              AND depth < users.max_degree -- Only add users that can appear at current depth. 
+              AND depth < #{user_table}.max_degree -- Only add users that can appear at current depth.
           )
-          SELECT DISTINCT ON (users.id) users.*, friend_of_friend.depth AS degree
-          FROM users
-          JOIN friend_of_friend ON users.id = friend_of_friend.target_id
-          WHERE users.id != :user_id
-          ORDER BY users.id, friend_of_friend.depth;
+          SELECT DISTINCT ON (#{user_table}.id) #{user_table}.*, friend_of_friend.depth AS degree
+          FROM #{user_table}
+          JOIN friend_of_friend ON #{user_table}.id = friend_of_friend.target_id
+          WHERE #{user_table}.id != :user_id
+          ORDER BY #{user_table}.id, friend_of_friend.depth;
           SQL
 
           connections = self.class.find_by_sql([sql, {user_id: id, max_depth: max_depth}])

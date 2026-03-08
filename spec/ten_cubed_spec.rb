@@ -19,5 +19,32 @@ RSpec.describe TenCubed do
       expect(TenCubed.configuration.max_network_depth).to eq(2)
       expect(TenCubed.configuration.connection_table_name).to eq(:test_connections)
     end
+
+    it "has default user_model_name" do
+      config = TenCubed::Configuration.new
+      expect(config.user_model_name).to eq("User")
+    end
+
+    it "has default user_table_name" do
+      config = TenCubed::Configuration.new
+      expect(config.user_table_name).to eq("users")
+    end
+
+    it "has default connection_class_name" do
+      config = TenCubed::Configuration.new
+      expect(config.connection_class_name).to eq("TenCubed::Connection")
+    end
+
+    it "allows configuring user_model_name, user_table_name, and connection_class_name" do
+      TenCubed.configure do |config|
+        config.user_model_name = "Member"
+        config.user_table_name = "members"
+        config.connection_class_name = "Connection"
+      end
+
+      expect(TenCubed.configuration.user_model_name).to eq("Member")
+      expect(TenCubed.configuration.user_table_name).to eq("members")
+      expect(TenCubed.configuration.connection_class_name).to eq("Connection")
+    end
   end
 end
